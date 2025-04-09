@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Plato</title>
+    <title>Confirmar Eliminación</title>
     <!-- Link a Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
     <div class="container py-5">
-        <h1 class="mb-4">Formulario de Plato</h1>
-        <form method="post" class="form-group">
+        <h1 class="mb-4">¿Estás seguro de que deseas eliminar este plato?</h1>
+        <p>Plato: {{ plato.nombre }}</p>
+        <p><strong>Descripción:</strong> {{ plato.descripcion }}</p>
+        <p><strong>Precio:</strong> S/{{ plato.precio }}</p>
+        
+        <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'lista_platos' %}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
     <!-- Agregar JS de Bootstrap -->

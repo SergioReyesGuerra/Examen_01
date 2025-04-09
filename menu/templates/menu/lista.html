@@ -1,11 +1,31 @@
-<h1>Lista de Platos</h1>
-<a href="{% url 'crear_plato' %}">Agregar nuevo plato</a>
-<ul>
-  {% for plato in platos %}
-    <li>
-      {{ plato.nombre }} - S/{{ plato.precio }}
-      <a href="{% url 'editar_plato' plato.id %}">Editar</a>
-      <a href="{% url 'eliminar_plato' plato.id %}">Eliminar</a>
-    </li>
-  {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Restaurante</title>
+    <!-- Link a Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="mb-4">Lista de Platos</h1>
+        <a href="{% url 'crear_plato' %}" class="btn btn-primary mb-4">Agregar nuevo plato</a>
+        <ul class="list-group">
+          {% for plato in platos %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              {{ plato.nombre }} - S/{{ plato.precio }}
+              <span>
+                <a href="{% url 'editar_plato' plato.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'eliminar_plato' plato.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+    </div>
+    <!-- Agregar JS de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

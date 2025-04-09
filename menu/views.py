@@ -23,5 +23,9 @@ def editar_plato(request, id):
 
 def eliminar_plato(request, id):
     plato = get_object_or_404(Plato, id=id)
-    plato.delete()
-    return redirect('lista_platos')
+
+    if request.method == 'POST':
+        plato.delete()
+        return redirect('lista_platos')
+
+    return render(request, 'menu/confirmar_eliminacion.html', {'plato': plato})
