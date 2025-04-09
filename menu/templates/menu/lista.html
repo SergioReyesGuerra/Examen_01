@@ -1,0 +1,11 @@
+<h1>Lista de Platos</h1>
+<a href="{% url 'crear_plato' %}">Agregar nuevo plato</a>
+<ul>
+  {% for plato in platos %}
+    <li>
+      {{ plato.nombre }} - S/{{ plato.precio }}
+      <a href="{% url 'editar_plato' plato.id %}">Editar</a>
+      <a href="{% url 'eliminar_plato' plato.id %}">Eliminar</a>
+    </li>
+  {% endfor %}
+</ul>
